@@ -1,0 +1,51 @@
+/* GENERAL STYLES */
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Oxygen", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin: 0.5em;
+}
+
+/* STYLES FOR HEAHDER */
+header {
+  height: 2em;
+  background-color: black;
+}
+
+/* STYLES FOR MOVIE CONTAINER */
+.movie_container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: grey 1px solid;
+}
+
+#left {
+  flex-direction: row-reverse;
+}
+
+#right {
+  flex-direction: row;
+  background-color: lightgrey;
+}
+
+/* STYLES FOR MOVIE INFO INSIDE MOVIE CONTAINER */
+.movie_info {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#actors {
+  font-style: italic;
+}
+
+/* STYLES FOR MOVIE IMAGE */
+img {
+  max-width: 10em;
+  padding: 0.5em;
+}
