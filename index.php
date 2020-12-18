@@ -62,45 +62,48 @@ $key = 0;
 </head>
 <body>
     <header>
+    <img class="header_logo" src="http://pngimg.com/uploads/amazon/amazon_PNG25.png">
     </header>
 
-    <div class="container">
-    <h1 id="page_title">Christmas movies</h1>
-        
-        <?php // Loop through movies to construct movie container
-            foreach($movies as $movie) { $key++ ?>
-            <div 
-                class="movie_container" 
-                <?php // Set left and right alignment on page
-                    if ($key % 2 == 0) {
-                        $id = "left";
-                    } else {
-                        $id ="right";
-                    };
-                ?>
-                id="<?php echo $id ?>"
-            >
-                <div class="movie_info">
-                    <h2><?php echo $key; echo ". "; echo $movie->title?></h2>
-                    <p id="actors"><?php echo $movie->actors?></p>
-                    <p id="description"><?php echo $movie->description?></p>
-                    <p id="rating">
-                        <?php 
-                        // Loop through rating to convert to stars
-                        for ($i = 0; $i < $movie->rating; $i++ ) {
-                            echo "&#11088 ";
+    <main>
+        <img src="images/movie_collection.jpg" alt="background" class="background">
+        <div class="container">
+        <h1 id="page_title">Christmas movies</h1>
+            
+            <?php // Loop through movies to construct movie container
+                foreach($movies as $movie) { $key++ ?>
+                <div 
+                    class="movie_container" 
+                    <?php // Set left and right alignment on page
+                        if ($key % 2 == 0) {
+                            $id = "left";
+                        } else {
+                            $id ="right";
                         };
-                        ?>
-                    </p>
-                    <button type="button">More info</button>
-                    <button type="button">Add to cart</button>
+                    ?>
+                    id="<?php echo $id ?>"
+                >
+                    <div class="movie_info">
+                        <h2><?php echo $key; echo ". "; echo $movie->title?></h2>
+                        <p id="actors"><?php echo $movie->actors?></p>
+                        <p id="description"><?php echo $movie->description?></p>
+                        <p id="rating">
+                            <?php 
+                            // Loop through rating to convert to stars
+                            for ($i = 0; $i < $movie->rating; $i++ ) {
+                                echo "&#11088 ";
+                            };
+                            ?>
+                        </p>
+                        <button type="button">More info</button>
+                        <button type="button">Add to cart</button>
+                    </div>
+                    <div class="movie_image">
+                        <img src="<?php echo $movie->image?>" alt="movie cover image" id="movie_image">
+                    </div>    
                 </div>
-                <div class="movie_image">
-                    <img src="<?php echo $movie->image?>" alt="movie cover image">
-                </div>    
-            </div>
-        <?php } ?>
-    </div>
-    
+            <?php } ?>
+        </div>
+    </main>
 </body>
 </html>
