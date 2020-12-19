@@ -108,11 +108,6 @@ $key = 0;
                             ?>
                         </p>
                         <div>
-                            <!-- Buttons -->
-                            <button type="button">More info</button>
-                            <button type="button" id="add_to_cart">Add to cart</button>
-                        </div>
-                        <div>
                             <!-- price info -->
                             <?php
                                 if ($movie->discount == true) {
@@ -120,8 +115,14 @@ $key = 0;
                             ?>      
                                 <p>From: $<?php echo $movie->price ?></p>
                                 <p>For: $<?php echo $newPrice?></p>
-                            <?php }; ?>
-
+                            <?php } else { ?>
+                                <p>Price: $<?php echo $movie->price ?></p>
+                            <?php } ?>
+                        </div>
+                        <div>
+                            <!-- Buttons -->
+                            <button type="button">More info</button>
+                            <button type="button" id="add_to_cart">Add to cart</button>
                         </div>
 
                     </div>
