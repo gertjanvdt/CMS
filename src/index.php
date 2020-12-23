@@ -48,12 +48,12 @@ $movies = (object) array(
     )
 );
 
-class Movie {
-
-}
-
 function calculateDiscount($price) {
     return $price * 0.9;
+};
+
+function numberInBasket($amount) {
+    return $amount++;
 };
 
 $key = 0; 
@@ -84,6 +84,7 @@ $key = 0;
 
     <div>
     <img src="images/shopping-cart.svg" alt="shopping cart" id="shopping_cart" class="header_image">
+    <p>1</p>
     </div>
     
     </header>

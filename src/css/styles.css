@@ -14,17 +14,26 @@ h1 {
 header {
   height: 60px;
   background-color: black;
+  display: flex;
+  justify-content: space-between;
 }
 
-.header_logo {
-  width: 100px;
-  object-fit: contain;
+.header_image {
   margin: 12px 20px 0;
+  object-fit: contain;
+}
+
+#header_logo {
+  width: 100px;
+}
+
+#shopping_cart {
+  height: 40px;
 }
 
 .background {
   max-width: 100%;
-  margin-bottom: -350px;
+  margin-bottom: -40%;
   padding: 0;
   z-index: -1;
   position: relative;
