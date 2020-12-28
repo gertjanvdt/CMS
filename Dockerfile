@@ -13,6 +13,8 @@ RUN apt-get install -y git
 #Instal Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+
 COPY ./src /usr/local/apache2/htdocs/
 
 CMD ["apachectl","-D","FOREGROUND"]
