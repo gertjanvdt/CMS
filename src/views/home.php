@@ -10,7 +10,7 @@ $loader = new Filesystemloader('templates');
 $twig = new Environment($loader);
 
 $page = (object) ['title' => 'hello'];
-// echo $twig->render('index.html.twig', ['page' => $page]);
+//echo $twig->render('index.html.twig', ['page' => $page]);
 
 // CMS normal code
 $moviesItems  = json_decode(file_get_contents("./movies.json"));
@@ -44,9 +44,9 @@ foreach($moviesItems as $item) {
 
 function calculateDiscount($price) {
     return $price * 0.9;
-
-
 };
+
+echo "dit is home.php"
 ?>
 
 

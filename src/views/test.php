@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>about</h1>
-    <h1>this is the about page</h1>
+    <h1>test!!!</h1>
 </body>
 </html>
