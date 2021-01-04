@@ -3,8 +3,8 @@
     <?php include 'partials/header.php'; ?>
 
     <main>
-    <h1>about</h1>
-        <h1>this is the about page</h1>
+    <h1>Your cart</h1>
     </main>
+    <?php include 'partials/footer.php'; ?>
 </body>
 </html>

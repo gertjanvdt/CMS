@@ -2,8 +2,10 @@
 
 // Twigg code
 require_once 'vendor/autoload.php';
+require_once 'models/movie.php';
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+use models\Movie;
 
 
 $loader = new Filesystemloader('templates');
@@ -17,26 +19,6 @@ $moviesItems  = json_decode(file_get_contents("./movies.json"));
 $movies = [];
 $key = 0; 
 
-class Movie {
-    public $title;
-    public $actors;
-    public $description;
-    public $image;
-    public $rating;
-    public $discount;
-    public $price;
-
-    public function __construct($title, $actors, $description, $image, $rating, $discount, $price) {
-        $this->title = $title;
-        $this->actors = $actors;
-        $this->description = $description;
-        $this->image = $image;
-        $this->rating = $rating;
-        $this->discount = $discount;
-        $this->price = $price;
-    }
-}
-
 foreach($moviesItems as $item) {
     $movie = new Movie($item->title, $item->actors, $item->description, $item->image, $item->rating, $item->discount, $item->price);
     array_push($movies, $movie);
@@ -45,34 +27,13 @@ foreach($moviesItems as $item) {
 function calculateDiscount($price) {
     return $price * 0.9;
 };
-
-echo "dit is home.php"
 ?>
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gertjan Adwise CMS</title>
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400&display=swap');
-    </style>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+<?php include 'partials/head.php';?>
 <body>
-    <header>
-    <div>
-        <img id="header_logo" class="header_image" src="http://pngimg.com/uploads/amazon/amazon_PNG25.png">
-    </div>
-
-    <div>
-        <img src="images/shopping-cart.svg" alt="shopping cart" id="shopping_cart" class="header_image">
-    </div>
-    
-    </header>
+    <?php include 'partials/header.php'; ?>
 
     <main>
         <img src="images/movie_collection.jpg" alt="background" class="background">
@@ -130,5 +91,6 @@ echo "dit is home.php"
             <?php } ?>
         </div>
     </main>
+    <?php include 'partials/footer.php' ?>
 </body>
 </html>

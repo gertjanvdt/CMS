@@ -18,5 +18,6 @@ RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/Allo
 COPY ./src /usr/local/apache2/htdocs/
 
 CMD ["apachectl","-D","FOREGROUND"]
+RUN a2enmod rewrite
 EXPOSE 80
 EXPOSE 443
