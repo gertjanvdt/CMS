@@ -7,5 +7,5 @@
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400&display=swap');
     </style>
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>

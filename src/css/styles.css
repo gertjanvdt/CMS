@@ -5,6 +5,13 @@
   font-family: "Oxygen", sans-serif;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
 h1 {
   text-align: center;
   margin: 0.5em;
@@ -12,7 +19,6 @@ h1 {
 
 li {
   display: inline-block;
-  background-color: red;
 }
 
 /* STYLES FOR HEAHDER */
@@ -99,4 +105,32 @@ button {
   border-style: solid;
   border-width: 1px;
   color: #111;
+}
+
+/* FOOTER STYLES */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  margin: 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+li {
+  display: inline-block;
+  margin: 20px;
+}
+
+.footerLeft > ul {
+  display: inline-block;
+}
+
+.footerRight > img {
+  padding: 0px 20px;
+  margin: 0;
 }
