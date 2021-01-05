@@ -35,7 +35,7 @@ function calculateDiscount($price) {
     <div class="page_title">
         <h1 id="page_title">Christmas movies!</h1>
     </div>
-    
+
     <div class="container">
         <?php // Loop through movies to construct movie container
             foreach($movies as $movie) { $key++ ?>
@@ -76,8 +76,8 @@ function calculateDiscount($price) {
                     </div>
                     <div>
                         <!-- Buttons -->
-                        <button type="button">More info</button>
-                        <button type="button" id="add_to_cart">Add to cart</button>
+                        <button type="button" class="amazon_btnSecondary">More info</button>
+                        <button type="button" id="add_to_cart" class="amazon_btnPrimary">Add to cart</button>
                     </div>
 
                 </div>

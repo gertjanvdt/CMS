@@ -211,7 +211,7 @@ button {
 }
 
 .checkout_leftBasketItems {
-  height: 100px;
+  min-height: 100px;
   background-color: #f3f3f3;
   border: 1px #ddd solid;
   margin: 2em 0;
@@ -252,6 +252,43 @@ button {
 
 .subtotal_gift > input {
   margin-right: 5px;
+}
+
+/* LOGIN PAGE STYLES */
+
+.login_boxContainer {
+  width: 350px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px solid #d3d3d3;
+  padding: 20px;
+  margin: 5em auto;
+}
+
+.login_boxContainer > form > input {
+  height: 30px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.signin_btn {
+  width: 100%;
+  margin: 15px 0;
+}
+
+.login_boxContainer > h2 {
+  margin-bottom: 15px;
+}
+
+.login_boxContainer > form > h5 {
+  margin-bottom: 5px;
+}
+
+.login_boxContainer > p {
+  font-size: 12px;
 }
 
 /* FOOTER STYLES */
