@@ -12,8 +12,10 @@ include 'views/partials/head.php';
 $request = $_SERVER['REQUEST_URI'];
 
 if ($request == '/') {    
+    include 'views/partials/subheader.php';
     require __DIR__ . '/views/home.php';
 } elseif ($request == '') {
+    include 'views/partials/subheader.php';
     require __DIR__ . '/views/home.php';
 } elseif ($request == '/about') {   
      require __DIR__ . '/views/about.php'; 
