@@ -31,9 +31,12 @@ function calculateDiscount($price) {
 
 <main>
     <img src="images/movie_collection.jpg" alt="background" class="background">
+    
+    <div class="page_title">
+        <h1 id="page_title">Christmas movies!</h1>
+    </div>
+    
     <div class="container">
-    <h1 id="page_title">Christmas movies!</h1>
-        
         <?php // Loop through movies to construct movie container
             foreach($movies as $movie) { $key++ ?>
             <div 

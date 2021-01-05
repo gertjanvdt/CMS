@@ -1,9 +1,9 @@
 <footer>
     <div class="footerLeft">
         <ul>
-            <li><a href="./">Home</a></li>
-            <li><a href="./about">About Us</a></li>
-            <li><a href="./cart">My shopping cart</a></li>
+            <li><a class="footer_link" href="./">Home</a></li>
+            <li><a class="footer_link" href="./about">About Us</a></li>
+            <li><a class="footer_link" href="./cart">My shopping cart</a></li>
         </ul>
     </div>
 
