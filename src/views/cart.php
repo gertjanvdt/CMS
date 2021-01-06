@@ -1,24 +1,44 @@
+<?php
+require_once 'models/basket.php';
+use models\BasketItem;
+?>
+
 <main>
     <div class="checkout_container">
         <div class="checkout_left">
-            <div class="checkout_leftInfo">
-                <img src="./images/empty_cart.svg" alt="">
-                <div class="checkout_leftOptions">
-                    <div>
-                        <h2>Your Amazon Cart is empty</h2>
-                        <a href="./">Shop todays holiday movie deals</a>
-                    </div>
-                    <div class="checkoutleft_leftOptionButtons">
-                        <a href="./login"><button class="amazon_btnPrimary">Sign in to your account</button></a>
-                        <a href="./login"><button class="amazon_btnSecondary" >Sign up now</button></a>
-                    </div>
-                </div>
-            </div>
+
+            <!-- Show no items block if basket is empty -->
+            <?php 
+            if (empty($basket)) {
+                include 'views/partials/emptyBasket.php'; 
+            }
+            ?>
+
             <div class="checkout_leftHeader">
                 <h2>Dear <span class="italic">Guest</span></h2>
                 <h4>Your shopping basket has <span class="italic">0</span> items</h4>
             </div>
             <div class="checkout_leftBasketItems">
+                <?php 
+                if (!empty($basket)) {
+                    foreach ($basket as $item) {
+                ?>
+                    <div class="basketItem_row">
+                        <img src="<?php echo $item->image?>" alt="movie cover image">
+                        <p> <?php echo $item->title?></p>
+                        <p>$ <?php echo $item->price?></p>
+                    </div>
+
+                <?php   };
+
+                }
+                ?>
+                <!-- <div class="basketItem_row">
+                    <img src="./images/home_alone.jpeg" alt="">
+                    <p> Home Alone</p>
+                    <p>$ 5.99</p>
+                </div> -->
+
 
             </div>
             <div class="disclaimer_text">

@@ -3,9 +3,11 @@
 // Twigg code
 require_once 'vendor/autoload.php';
 require_once 'models/movie.php';
+require_once 'models/basket.php';
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use models\Movie;
+use models\BasketItem;
 
 
 $loader = new Filesystemloader('templates');
@@ -27,6 +29,7 @@ foreach($moviesItems as $item) {
 function calculateDiscount($price) {
     return $price * 0.9;
 };
+
 ?>
 
 <main>
@@ -47,7 +50,7 @@ function calculateDiscount($price) {
                 id="<?php echo $id ?>"
             >
                 <div class="movie_info">
-                    <h2><?php echo $key; echo ". "; echo $movie->title?></h2>
+                    <h2><?php echo "$key.  $movie->title"?></h2>
                     <p id="actors"><?php echo $movie->actors?></p>
                     <p id="description"><?php echo $movie->description?></p>
                     <p id="rating">

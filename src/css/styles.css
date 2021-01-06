@@ -15,12 +15,6 @@ body {
   flex-direction: column;
 }
 
-h1,
-h3 {
-  text-align: center;
-  margin: 0.5em;
-}
-
 li {
   display: inline-block;
 }
@@ -136,6 +130,7 @@ header {
   width: 90%;
   margin: auto;
   max-width: 1072px;
+  margin-bottom: 7em;
 }
 
 .movie_container {
@@ -230,6 +225,17 @@ button {
   background-color: #f3f3f3;
   border: 1px #ddd solid;
   margin: 2em 0;
+  padding: 10px;
+}
+
+.basketItem_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.basketItem_row > img {
+  height: 6em;
 }
 
 .disclaimer_text {
