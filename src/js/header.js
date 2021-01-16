@@ -4,7 +4,7 @@ function getData() {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            if(this.response === "there is no cookie") {
+            if(this.response === "") {
             } else {
                 let basket = JSON.parse(this.response); 
                 setCartAmount(basket.length);

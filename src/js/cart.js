@@ -18,6 +18,9 @@ getData();
 function showBasketItems() {
     if (basket !== "") {
         for (let i = 0; i < basket.length; i++) {
+            let bin = document.createElement('img');
+            bin.src = './images/delete.svg';
+            bin.className = 'basketItem_bin'
             
             let img = document.createElement('img');
             img.src = basket[i].image;;
@@ -31,6 +34,7 @@ function showBasketItems() {
             let basketItemRow = document.createElement('div');
             basketItemRow.className = "basketItem_row";
 
+            //basketItemRow.appendChild(bin);
             basketItemRow.appendChild(img);
             basketItemRow.appendChild(title);
             basketItemRow.appendChild(price);
@@ -91,7 +95,7 @@ function getData() {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            if(this.response === "there is no cookie") {
+            if(this.response === "") {
                 console.log('do nothing')
             } else {
                 console.log(this.response);
