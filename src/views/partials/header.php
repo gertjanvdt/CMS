@@ -1,3 +1,9 @@
+<?php
+require 'models/basket.php';
+
+use models\BasketItem;
+?>
+
 <header>
     <div>
         <a href="./">
@@ -6,8 +12,8 @@
     </div>
 
     <div class="searchBar">
-         <input class="searchBar_input" type="text">
-         <img class="searchBar_img" src="./images/magnifying-glass.svg" alt="">   
+        <input class="searchBar_input" type="text">
+        <img class="searchBar_img" src="./images/magnifying-glass.svg" alt="">
     </div>
 
     <div class="headerNav">
@@ -21,8 +27,12 @@
             <span class="headerNav_option">Returns</span>
             <span class="headerNav_option">& Orders</span>
         </div>
-        <a href="./cart">
-            <img src="images/shopping-cart.svg" alt="shopping cart" id="shopping_cart">
-        </a>
-    </div>   
+        <div class="headerNav_option" id="cart_container">
+            <a href="./cart">
+                <img src="images/shopping-cart.svg" alt="shopping cart" id="shopping_cart">
+                <p id="cart_amount">0</p>
+            </a>
+        </div>
+    </div>
+    <script src="../js/header.js"></script>
 </header>

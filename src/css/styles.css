@@ -102,6 +102,18 @@ header {
   height: 40px;
 }
 
+#cart_container {
+  position: relative;
+}
+
+#cart_amount {
+  color: black;
+  position: absolute;
+  top: 7px;
+  left: 20px;
+  color: black;
+}
+
 .background {
   max-width: 100%;
   margin-bottom: -40%;
@@ -158,12 +170,12 @@ header {
   justify-content: space-between;
 }
 
-#actors {
+.actors {
   font-style: italic;
 }
 
 /* STYLES FOR MOVIE IMAGE */
-#movie_image {
+.movie_image {
   max-width: 10em;
   padding: 0.5em;
 }
@@ -172,14 +184,6 @@ button {
   height: 2em;
   border-radius: 5px;
   border: black 1px solid;
-}
-
-#add_to_cart {
-  background: #f0c14b;
-  border-color: #a88734 #9c7e31 #846a29;
-  border-style: solid;
-  border-width: 1px;
-  color: #111;
 }
 
 /* STYLES FOR CART */
@@ -218,6 +222,13 @@ button {
 
 .checkout_leftHeader {
   border-bottom: 1px #ddd solid;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+#delete_btn {
+  height: 2em;
 }
 
 .checkout_leftBasketItems {
@@ -232,6 +243,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.basketItem_row:last-child {
+  border-bottom: none;
 }
 
 .basketItem_row > img {

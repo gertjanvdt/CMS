@@ -1,17 +1,38 @@
 <?php
-namespace models;
 
-class BasketItem {
-    public $title;
-    public $image;
-    public $price;
+$method = $_SERVER['REQUEST_METHOD'];
+$info = $_POST;
 
-    public function __construct($title, $image, $price) {
-        $this->title = $title;
-        $this->image = $image;
-        $this->price = $price;
+
+if (isset($_COOKIE['data'])) {
+    $basket = json_decode($_COOKIE['data']);
+} else {
+    //  echo 'there is no coockie';
+    $basket = array();
+}
+
+if ($method === "POST") {
+
+    if ($_POST['title'] == 'delete') {
+        echo 'delete';
+        setcookie("data", "", time() - 3600);
+    } else {
+        $moviesItems  = json_decode(file_get_contents("../movies.json"));
+        foreach ($moviesItems as $movie) {
+            if ($movie->title == $_POST['title']) {
+                array_push($basket, $movie);
+                setcookie("data", json_encode($basket), "/");
+                var_dump($basket);
+            }
+        }
     }
 }
 
-$basket = [];
-?>
+
+if ($method === "GET") {
+    if (isset($_COOKIE['data'])) {
+        echo json_encode($basket);
+    } else {
+        echo 'there is no cookie';
+    }
+};

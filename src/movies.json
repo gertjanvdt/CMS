@@ -6,7 +6,7 @@
         "image": "images/home_alone.jpeg",
         "rating": 4,
         "discount": false,
-        "price": 5.99
+        "price": 10
     },
     {
         "title": "Love Actually",
@@ -14,8 +14,8 @@
         "description": "Take an all-star cast, eight rom-com storylines, and Christmas, and what do you get? An incredible ensemble movie—that Hollywood has since tried (unsuccessfully) to replicate with the truly awful Valentine’s Day and what looks like an even worse New Year’s Eve.",
         "image": "images/love_actually.jpg",
         "rating": 2,
-        "discount": true,
-        "price": 9.99
+        "discount": false,
+        "price": 8
 
     },
     {
@@ -24,8 +24,8 @@
         "description": "Chevy Chase was at his peak as the head of the Griswold household, determined to give his family an old-fashioned Christmas. But despite his best efforts, things start to go awry as soon as his extended family arrives. ",
         "image": "images/christmas_vacation.jpg",
         "rating": 3,
-        "discount": true,
-        "price": 7.50
+        "discount": false,
+        "price": 15
 
     },
     {
@@ -35,7 +35,7 @@
         "image": "images/elf.jpg",
         "rating": 5,
         "discount": false,
-        "price": 11.50
+        "price": 11
     },
     {
         "title": "A Christmas Story",
@@ -43,8 +43,8 @@
         "description": "This staple is ranked consistently as one of the best holiday films of all time, and for good reason. The sheer number of memorable scenes and lines—Flick getting his tongue stuck to the flagpole, the boys being triple-dog-dared to do something (and the aghast look on Ralphie’s face as the dares escalate), Ralphie’s cringe-inducing pink bunny pajamas, eating a Christmas dinner of Peking duck (or what Ralphie calls a Chinese turkey), and of course the iconic line, “You’ll shoot your eye out!” ",
         "image": "images/christmas_story.jpg",
         "rating": 2,
-        "discount": true,
-        "price": 12.99
+        "discount": false,
+        "price": 12
     }
 
 ]
