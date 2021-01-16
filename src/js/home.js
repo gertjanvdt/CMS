@@ -1,13 +1,6 @@
 const cartButton = document.querySelectorAll('.add_to_cart');
 const cartDisplay = document.getElementById('cart_amount');
-let cartAmount = 0;
 
-function addCartNumber() {
-    let cartAmount = parseInt(cartDisplay.innerHTML);
-    cartAmount++
-    cartDisplay.innerHTML = cartAmount;
-    return cartAmount;
-}
 
 
 // function getMovies() {
@@ -43,8 +36,8 @@ function sendData(title) {
 
 for (let i = 0; i < cartButton.length; i++) {
     cartButton[i].addEventListener('click', (e) => {
-        addCartNumber();
         let title= cartButton[i].dataset.title;
         sendData(title);
+        //location.reload();
     })
 }

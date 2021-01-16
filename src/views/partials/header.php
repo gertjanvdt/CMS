@@ -20,12 +20,12 @@ use models\BasketItem;
         <div class="headerNav_option">
             <a href="./login">
                 <p class="headerNav_option">Hello, sign in</p>
-                <p class="headerNav_option">Accounts & Lists</p>
+                <p class="headerNav_optionBold">Accounts & Lists</p>
             </a>
         </div>
         <div class="headerNav_option">
             <span class="headerNav_option">Returns</span>
-            <span class="headerNav_option">& Orders</span>
+            <span class="headerNav_optionBold">& Orders</span>
         </div>
         <div class="headerNav_option" id="cart_container">
             <a href="./cart">

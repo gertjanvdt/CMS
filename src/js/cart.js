@@ -2,6 +2,7 @@ const bin = document.getElementById('delete_btn');
 const main = document.getElementsByTagName('main');
 let basket = '';
 const basketItemsContainer = document.querySelector('.checkout_leftBasketItems');
+const basketEmptyInfo = document.querySelector('.checkout_leftInfo');
 
 
 bin.addEventListener('click', (e) => {
@@ -49,7 +50,6 @@ function setTotal() {
         let totalPrice = 0
         for (let i = 0; i < basket.length; i++) {
             totalPrice += parseInt(basket[i].price);
-            console.log(basket[i].price);
         }
         total.innerHTML = totalPrice;
     }
@@ -61,6 +61,12 @@ function setNumberOfItems () {
         nmbrOfItems.innerHTML = "0"
     } else {
         nmbrOfItems.innerHTML = basket.length;
+    }
+}
+
+function hideEmptyBanner (itemsInBasket) {
+    if (itemsInBasket > 0) {
+        basketEmptyInfo.classList.add("hide") 
     }
 }
 
@@ -93,6 +99,7 @@ function getData() {
                 showBasketItems();
                 setTotal();
                 setNumberOfItems (); 
+                hideEmptyBanner(basket.length)
             }            
          }; 
         
