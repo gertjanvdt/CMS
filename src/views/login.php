@@ -30,14 +30,16 @@ function userLogin($users)
 {
     //echo json_encode($users);
     if (isEmpty($_POST['email']) || isEmpty($_POST['password'])) {
+        $warning = "Please enter email and password";
         require 'partials/userLogin.php';
-        echo '<div class="result hide">empty</div>';
     } elseif (validateUser($users, $_POST['email'], $_POST['password'])) {
         require 'partials/userLoggedIn.php';
     } else {
-        require 'partials/userLogin.php';;
+        $warning = "Email or password is incorrect";
+        require 'partials/userLogin.php';
     }
 }
+
 
 function validateUser($users, $email, $password)
 

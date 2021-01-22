@@ -318,6 +318,10 @@ button {
   margin: 5em auto;
 }
 
+.warning {
+  border: 1px solid red !important;
+}
+
 .login_boxContainer > form > input {
   height: 30px;
   margin-bottom: 10px;
@@ -341,6 +345,11 @@ button {
 
 .login_boxContainer > p {
   font-size: 12px;
+}
+
+.login_warning {
+  color: red;
+  text-align: center;
 }
 
 /* LOGGEDIN PAGE STYLES */
