@@ -2,27 +2,6 @@ const cartButton = document.querySelectorAll('.add_to_cart');
 const cartDisplay = document.getElementById('cart_amount');
 
 
-
-// function getMovies() {
-//     let xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-//     console.log(this);
-//     }
-
-//     xhttp.open("GET", "movies.json", true);
-//     xhttp.send();
-// };
-
-// function getData() {
-//     let xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-        
-//     }
-
-//     xhttp.open("GET", "models/basket.php", true);
-//     xhttp.send();
-// };
-
 function sendData(title) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {

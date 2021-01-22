@@ -1,34 +1,17 @@
 <?php
 
-// Twigg code
-require_once 'vendor/autoload.php';
-require 'models/movie.php';
-
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
-use models\Movie;
-
-
-$loader = new Filesystemloader('templates');
-$twig = new Environment($loader);
-
-$page = (object) ['title' => 'hello'];
+// ---- TWIGG CODE -----
+//require_once 'vendor/autoload.php';
+// $loader = new Filesystemloader('templates');
+// $twig = new Environment($loader);
+//$page = (object) ['title' => 'hello'];
 //echo $twig->render('index.html.twig', ['page' => $page]);
+// use Twig\Environment;
+// use Twig\Loader\FilesystemLoader;
+// ----- TWIG CODE END -----
 
-// CMS normal code
-$moviesItems  = json_decode(file_get_contents("./movies.json"));
-$movies = [];
-$key = 0;
 
-foreach ($moviesItems as $item) {
-    $movie = new Movie($item->title, $item->actors, $item->description, $item->image, $item->rating, $item->discount, $item->price);
-    array_push($movies, $movie);
-};
-
-function calculateDiscount($price)
-{
-    return $price * 0.9;
-};
+require 'models/movies.php';
 
 ?>
 

@@ -1,0 +1,42 @@
+version: '3'
+services:
+  webserver:
+    build:
+      context: ./
+      dockerfile: DevBox.Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - database:database
+    volumes:
+      - ./src:/var/www/html/
+  database:
+    build:
+      context: ./
+      dockerfile: MySQL.Dockerfile
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD : 'yes'
+    restart: always
+    volumes:
+            - ./database:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: 'phpmyadmin'
+    links:
+      - database:database
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: ''
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ''
+    ports:
+      - '8080:80'
+    volumes: 
+      - ./sessions

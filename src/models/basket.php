@@ -28,11 +28,12 @@ if ($method === "POST") {
     }
 }
 
+// Waarom pakt php het cookie niet op bij load/get?
 
 if ($method === "GET") {
     if (isset($_COOKIE['data'])) {
         echo json_encode($basket);
     } else {
-        // echo 'there is no cookie';
+        //echo 'there is no cookie';
     }
 };

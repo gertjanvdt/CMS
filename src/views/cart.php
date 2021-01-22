@@ -24,7 +24,17 @@ require 'models/basket.php';
 
             <div class="checkout_leftHeader">
                 <div>
-                    <h2>Dear <span class="italic">Guest</span></h2>
+                    <h2>Dear
+                        <span class="italic">
+                            <?php
+                            if (!isset($_SESSION['email'])) {
+                                echo 'Guest';
+                            } else {
+                                echo $_SESSION['email'];
+                            }
+                            ?>
+                        </span>
+                    </h2>
                     <h4>Your shopping basket has <span class="italic basketItems_amount">0 </span> item(s)</h4>
                 </div>
                 <div class="checkout_leftHeaderBin">

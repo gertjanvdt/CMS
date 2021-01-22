@@ -1,7 +1,8 @@
 <?php
-require 'models/basket.php';
+//De errors van de login POST request komen die door deze require? Dacht dat het alleen inporteerde?
+//require 'models/basket.php';
 
-use models\BasketItem;
+//use models\BasketItem;
 ?>
 
 <header>
@@ -19,7 +20,15 @@ use models\BasketItem;
     <div class="headerNav">
         <div class="headerNav_option">
             <a href="./login">
-                <p class="headerNav_option">Hello, sign in</p>
+                <p class="headerNav_option">Hello,
+                    <?php
+                    if (!isset($_SESSION['firstname'])) {
+                        echo 'sign in';
+                    } else {
+                        echo $_SESSION['firstname'];
+                    }
+                    ?>
+                </p>
                 <p class="headerNav_optionBold">Accounts & Lists</p>
             </a>
         </div>
@@ -29,7 +38,7 @@ use models\BasketItem;
         </div>
         <div class="headerNav_option" id="cart_container">
             <a href="./cart">
-                <img src="images/shopping-cart.svg" alt="shopping cart" id="shopping_cart">
+                <img src="images/cart.svg" alt="shopping cart" id="shopping_cart">
                 <p id="cart_amount">0</p>
             </a>
         </div>
