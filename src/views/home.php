@@ -58,7 +58,7 @@ require 'models/movies.php';
                     </div>
 
                     <div>
-                        <button data-title="<?php echo $movie->title ?>" type="button" class="amazon_btnPrimary add_to_cart">Add to cart</button>
+                        <button data-title="<?php echo $movie->id ?>" type="button" class="amazon_btnPrimary add_to_cart">Add to cart</button>
                     </div>
                 </div>
 

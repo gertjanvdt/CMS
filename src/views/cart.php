@@ -1,5 +1,6 @@
 <?php
 require 'models/basket.php';
+$basketRowId = 0;
 
 
 ?>
@@ -27,10 +28,10 @@ require 'models/basket.php';
                     <h2>Dear
                         <span class="italic">
                             <?php
-                            if (!isset($_SESSION['email'])) {
-                                echo 'Guest';
+                            if (isset($_SESSION['firstname'])) {
+                                echo $_SESSION['firstname'];
                             } else {
-                                echo $_SESSION['email'];
+                                echo 'Guest';
                             }
                             ?>
                         </span>
@@ -44,6 +45,20 @@ require 'models/basket.php';
             </div>
             <div class="checkout_leftBasketItems">
                 <!-- ROWS WITH ITEMS SET WITH JS -->
+                <?php
+                if ($basket) {
+                    foreach ($basket as $basketItem) {
+                        $basketRowId++
+                ?>
+                        <div class="basketItem_row" data-title="<?php echo $basketRowId ?>">
+                            <img src="<?php echo $basketItem->image ?>" alt="item_image">
+                            <p><?php echo $basketItem->title ?></p>
+                            <p>$ <?php echo $basketItem->price ?></p>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
             </div>
             <div class="disclaimer_text">
                 <p>The price and availability of items at Amazon.com are subject to change. The Cart is a temporary place to store a list of your items and reflects each item's most recent price. Shopping CartLearn more
@@ -60,5 +75,5 @@ require 'models/basket.php';
             </div>
         </div>
     </div>
-    <script src="../js/cart.js"></script>
+    <!-- <script src="../js/cart.js"></script> -->
 </main>

@@ -9,7 +9,7 @@ use models\User;
 // Get users from DB
 if ($result) {
     while ($row = $result->fetch_object()) {
-        array_push($users, new User($row->First_Name, $row->Last_Name, $row->Email, $row->Password));
+        array_push($users, new User($row->User_Id, $row->First_Name, $row->Last_Name, $row->Email, $row->Password));
     }
 }
 
@@ -42,13 +42,13 @@ function userLogin($users)
 
 
 function validateUser($users, $email, $password)
-
 {
     foreach ($users as $user) {
         if ($user->Email === $email && $user->Password === $password) {
             setUserInfo($user);
             $_SESSION['loggedin'] = true;
-            echo 'loggedin';
+            //$info = array(true, $user->User_Id);
+            setcookie("loggedin", $user->User_Id, "/");
             return true;
         }
     }
@@ -60,6 +60,7 @@ function setUserInfo($user)
 {
     $_SESSION['firstname'] = $user->First_Name;
     $_SESSION['lastname'] = $user->Last_Name;
+    $_SESSION['userid'] = $user->User_Id;
 }
 
 
@@ -67,3 +68,15 @@ function isEmpty($text)
 {
     return $text == '';
 }
+
+// function loginCookie($user)
+// {
+//     $sessionInfo = [];
+//     $userid = $user->User_Id;
+//     echo $userid;
+//     $session = session_id();
+//     array_push($sessionInfo, $userid);
+//     array_push($sessionInfo, $session);
+//     var_dump($sessionInfo);
+//     setcookie("data", json_encode($sessionInfo), "/");
+// }

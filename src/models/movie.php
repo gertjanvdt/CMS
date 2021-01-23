@@ -2,6 +2,7 @@
 namespace models;
 
 class Movie {
+    public $id;
     public $title;
     public $actors;
     public $description;
@@ -10,7 +11,8 @@ class Movie {
     public $discount;
     public $price;
 
-    public function __construct($title, $actors, $description, $image, $rating, $discount, $price) {
+    public function __construct($id, $title, $actors, $description, $image, $rating, $discount, $price) {
+        $this->id = $id;
         $this->title = $title;
         $this->actors = $actors;
         $this->description = $description;
@@ -20,5 +22,3 @@ class Movie {
         $this->price = $price;
     }
 }
-
-?>

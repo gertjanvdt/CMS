@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 // Error handling
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
@@ -33,10 +34,10 @@ include 'views/partials/head.php';
         include 'views/partials/header.php';
         require __DIR__ . '/views/cart.php';
     } elseif ($request == '/login') {
-        include 'views/partials/header_anno.php';
+        include 'views/partials/header.php';
         require __DIR__ . '/views/login.php';
     } elseif ($request == '/logout') {
-        include 'views/partials/header_anno.php';
+        include 'views/partials/header.php';
         require __DIR__ . '/views/logout.php';
     } else {
         http_response_code(404);

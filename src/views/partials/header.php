@@ -1,8 +1,15 @@
 <?php
-//De errors van de login POST request komen die door deze require? Dacht dat het alleen inporteerde?
-//require 'models/basket.php';
+$basket = [];
+$result = $conn->query("SELECT * FROM basket");
 
-//use models\BasketItem;
+if ($result) {
+    while ($row = $result->fetch_object()) {
+        array_push($basket, $row->Item_Id);
+    }
+}
+
+$itemsInBasket = count($basket);
+
 ?>
 
 <header>
@@ -39,9 +46,17 @@
         <div class="headerNav_option" id="cart_container">
             <a href="./cart">
                 <img src="images/cart.svg" alt="shopping cart" id="shopping_cart">
-                <p id="cart_amount">0</p>
+                <p id="cart_amount">0
+                    <?php
+                    if ($itemsInBasket > 0) {
+                        // echo $itemsInBasket;
+                    } else {
+                        //  echo 0;
+                    };
+                    ?>
+                </p>
             </a>
         </div>
     </div>
-    <script src="../js/header.js"></script>
+    <!-- <script src="../js/header.js"></script> -->
 </header>

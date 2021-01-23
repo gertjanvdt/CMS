@@ -2,6 +2,7 @@
 unset($_SESSION['firstname']);
 unset($_SESSION['lastname']);
 unset($_SESSION['loggedin']);
+setcookie("loggedin", "", time() - 3600);
 ?>
 
 <main>
