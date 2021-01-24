@@ -25,21 +25,18 @@ include 'views/partials/head.php';
     $request = $_SERVER['REQUEST_URI'];
 
     if ($request == '/' || $request == '') {
-        //include 'views/partials/header.php';
         include 'views/partials/subheader.php';
         require __DIR__ . '/views/home.php';
     } elseif ($request == '/about') {
-        // include 'views/partials/header.php';
         require __DIR__ . '/views/about.php';
     } elseif ($request == '/cart') {
-        //include 'views/partials/header.php';
         require __DIR__ . '/views/cart.php';
     } elseif ($request == '/login') {
-        //include 'views/partials/header.php';
         require __DIR__ . '/views/login.php';
     } elseif ($request == '/logout') {
-        //include 'views/partials/header.php';
         require __DIR__ . '/views/logout.php';
+    } elseif ($request == '/register') {
+        require __DIR__ . '/views/register.php';
     } else {
         http_response_code(404);
         require __DIR__ . '/views/404.php';

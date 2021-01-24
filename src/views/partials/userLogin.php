@@ -18,6 +18,8 @@
             <button type="submit" class="amazon_btnPrimary signin_btn">Sign in</button>
         </form>
         <p>By signing in you agree to the AMAZON FAKE CLONE Conditions of Use & Sale. Please see our Privacy Notice, our Cookies Notice and our Interet-based Adds Notice.</p>
-        <button class="amazon_btnSecondary signin_btn">Create your Amazon Account</button>
+        <a href="/register">
+            <button class="amazon_btnSecondary signin_btn">Create your Amazon Account</button>
+        </a>
     </div>
 </main>

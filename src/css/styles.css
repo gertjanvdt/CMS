@@ -242,7 +242,7 @@ button {
 }
 
 .delete_btn {
-  height: 1.5em;
+  height: 1.5em !important;
 }
 .delete_btn:hover {
   cursor: pointer;
@@ -432,6 +432,36 @@ button {
 
 .loggedin_optionsImage {
   height: 5em;
+}
+
+/* REGISTER STYLES */
+
+.register_container {
+  display: flex;
+  justify-content: center;
+}
+
+.registerForm_container {
+  width: 350px;
+  border: 1px solid #d3d3d3;
+  padding: 20px;
+  margin: 5em auto;
+}
+
+.registerForm_container > form > h5 {
+  margin-bottom: 5px;
+}
+
+.registerForm_container > h2 {
+  margin-bottom: 15px;
+}
+
+.registerForm_container > form > input {
+  height: 30px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  width: 100%;
+  border: 1px black solid;
 }
 
 /* FOOTER STYLES */
