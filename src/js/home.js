@@ -17,6 +17,6 @@ for (let i = 0; i < cartButton.length; i++) {
     cartButton[i].addEventListener('click', (e) => {
         let id = cartButton[i].dataset.title;
         sendData(id);
-        //location.reload();
+        document.location.reload();
     })
 }

@@ -1,17 +1,3 @@
-<?php
-$basket = [];
-$result = $conn->query("SELECT * FROM basket");
-
-if ($result) {
-    while ($row = $result->fetch_object()) {
-        array_push($basket, $row->Item_Id);
-    }
-}
-
-$itemsInBasket = count($basket);
-
-?>
-
 <header>
     <div>
         <a href="./">
@@ -43,20 +29,14 @@ $itemsInBasket = count($basket);
             <span class="headerNav_option">Returns</span>
             <span class="headerNav_optionBold">& Orders</span>
         </div>
+
         <div class="headerNav_option" id="cart_container">
             <a href="./cart">
                 <img src="images/cart.svg" alt="shopping cart" id="shopping_cart">
-                <p id="cart_amount">0
-                    <?php
-                    if ($itemsInBasket > 0) {
-                        // echo $itemsInBasket;
-                    } else {
-                        //  echo 0;
-                    };
-                    ?>
-                </p>
+                <!-- Amount shown in  basket set by JS in header.js -->
+                <p id="cart_amount"></p>
             </a>
         </div>
     </div>
-    <!-- <script src="../js/header.js"></script> -->
+    <script src="../js/header.js"></script>
 </header>

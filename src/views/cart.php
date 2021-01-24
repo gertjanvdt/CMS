@@ -1,6 +1,9 @@
 <?php
 require 'models/basket.php';
 $basketRowId = 0;
+$basketCount = count($basket);
+
+
 
 
 ?>
@@ -8,20 +11,28 @@ $basketRowId = 0;
 <main>
     <div class="checkout_container">
         <div class="checkout_left">
-
-            <div class="checkout_leftInfo">
-                <img src="./images/empty_cart.svg" alt="">
-                <div class="checkout_leftOptions">
-                    <div>
-                        <h2>Your Amazon Cart is empty</h2>
-                        <a href="./">Shop todays holiday movie deals</a>
-                    </div>
-                    <div class="checkoutleft_leftOptionButtons">
-                        <a href="./login"><button class="amazon_btnPrimary">Sign in to your account</button></a>
-                        <a href="./login"><button class="amazon_btnSecondary">Sign up now</button></a>
+            <?php
+            if ($basketCount === 0) {
+            ?>
+                <!-- Remove this part if basket is not empty -->
+                <div class="checkout_leftInfo">
+                    <img src="./images/empty_cart.svg" alt="">
+                    <div class="checkout_leftOptions">
+                        <div>
+                            <h2>Your Amazon Cart is empty</h2>
+                            <a href="./">Shop todays holiday movie deals</a>
+                        </div>
+                        <div class="checkoutleft_leftOptionButtons">
+                            <a href="./login"><button class="amazon_btnPrimary">Sign in to your account</button></a>
+                            <a href="./login"><button class="amazon_btnSecondary">Sign up now</button></a>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <!-- end -->
+            <?php
+            }
+            ?>
+
 
             <div class="checkout_leftHeader">
                 <div>
@@ -36,24 +47,32 @@ $basketRowId = 0;
                             ?>
                         </span>
                     </h2>
-                    <h4>Your shopping basket has <span class="italic basketItems_amount">0 </span> item(s)</h4>
-                </div>
-                <div class="checkout_leftHeaderBin">
-                    <img src="./images/delete.svg" alt="" id="delete_btn">
+                    <h4>Your shopping basket has
+                        <span class="italic basketItems_amount">
+                            <?php
+                            echo $basketCount;
+                            ?>
+                        </span>
+                        item(s)
+                    </h4>
                 </div>
 
             </div>
             <div class="checkout_leftBasketItems">
-                <!-- ROWS WITH ITEMS SET WITH JS -->
+                <!-- ROWS WITH ITEMS SET WITH BASED ON BASKET -->
                 <?php
                 if ($basket) {
+                    // var_dump($basket);
                     foreach ($basket as $basketItem) {
-                        $basketRowId++
+
                 ?>
                         <div class="basketItem_row" data-title="<?php echo $basketRowId ?>">
-                            <img src="<?php echo $basketItem->image ?>" alt="item_image">
-                            <p><?php echo $basketItem->title ?></p>
-                            <p>$ <?php echo $basketItem->price ?></p>
+                            <img src="../images/delete.svg" class="delete_btn" data-title="<?php echo $basketItem->id ?>">
+                            <div>
+                                <img src="<?php echo $basketItem->image ?>" alt="item_image">
+                                <p><?php echo $basketItem->title ?></p>
+                                <p>$ <?php echo $basketItem->price ?></p>
+                            </div>
                         </div>
                 <?php
                     }
@@ -68,12 +87,18 @@ $basketRowId = 0;
 
         <div class="checkout_right">
             <div class="subtotal">
-                <p>Subtotal: $ <span class="subtotal_amount">0.00</span></p>
+                <p>Subtotal: $
+                    <span class="subtotal_amount">
+                        <?php
+                        echo setSubtotal($basket);
+                        ?>
+                    </span>
+                </p>
                 <small class="subtotal_gift" data-children-count="1">
                     <input type="checkbox">This order contains a gift</small>
                 <button>Proceed to checkout</button>
             </div>
         </div>
     </div>
-    <!-- <script src="../js/cart.js"></script> -->
+    <script src="../js/cart.js"></script>
 </main>

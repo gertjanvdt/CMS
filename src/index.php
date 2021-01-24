@@ -19,25 +19,26 @@ include 'views/partials/head.php';
 <body>
     <?php
     // Header of the page and navbar
+    include 'views/partials/header.php';
 
     // php router
     $request = $_SERVER['REQUEST_URI'];
 
     if ($request == '/' || $request == '') {
-        include 'views/partials/header.php';
+        //include 'views/partials/header.php';
         include 'views/partials/subheader.php';
         require __DIR__ . '/views/home.php';
     } elseif ($request == '/about') {
-        include 'views/partials/header.php';
+        // include 'views/partials/header.php';
         require __DIR__ . '/views/about.php';
     } elseif ($request == '/cart') {
-        include 'views/partials/header.php';
+        //include 'views/partials/header.php';
         require __DIR__ . '/views/cart.php';
     } elseif ($request == '/login') {
-        include 'views/partials/header.php';
+        //include 'views/partials/header.php';
         require __DIR__ . '/views/login.php';
     } elseif ($request == '/logout') {
-        include 'views/partials/header.php';
+        //include 'views/partials/header.php';
         require __DIR__ . '/views/logout.php';
     } else {
         http_response_code(404);

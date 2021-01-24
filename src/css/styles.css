@@ -212,6 +212,7 @@ button {
 
 .checkout_left {
   flex: 0.6;
+  max-width: 1000px;
 }
 
 .checkout_leftInfo {
@@ -240,8 +241,11 @@ button {
   justify-content: space-between;
 }
 
-#delete_btn {
-  height: 2em;
+.delete_btn {
+  height: 1.5em;
+}
+.delete_btn:hover {
+  cursor: pointer;
 }
 
 .checkout_leftBasketItems {
@@ -260,11 +264,18 @@ button {
   border-bottom: 1px solid #ddd;
 }
 
+.basketItem_row > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0.95;
+}
+
 .basketItem_row:last-child {
   border-bottom: none;
 }
 
-.basketItem_row > img {
+.basketItem_row > div > img {
   height: 6em;
 }
 

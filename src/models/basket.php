@@ -10,12 +10,14 @@ $basket = [];
 
 $sessionId = $_COOKIE['PHPSESSID'];
 
-// Set movieId when request comes in.
+// Set movieId or deleteId when request comes in.
 if (isset($_POST['title'])) {
     $movieId = $_POST['title'];
+} elseif (isset($_POST['delete'])) {
+    $deleteId = $_POST['delete'];
 }
 
-if ($method === "POST" && $movieId != 'delete') {
+if ($method === "POST" && isset($movieId)) {
     $movie = getMovieInfo($conn, $movieId);
     if (userLoggedIn()) {
         $userId = $_COOKIE['loggedin'];
@@ -25,8 +27,8 @@ if ($method === "POST" && $movieId != 'delete') {
         $sql = "INSERT INTO `basket` (`Item_Id`, `Image`, `Title`, `Price`, `Discount`, `Amount`, `User_Id`, `Movie_Id`, `Session_Id`) VALUES (NULL, '$movie->image', '$movie->title', $movie->price, '0', '1', 0, $movieId, '$sessionId' );";
         echo 'insert to basket NOT logged in' . $sessionId;
     }
-
-    insertMoviesSQL($conn, $sql);
+    $action = "Add to";
+    sendSQLQuery($action, $conn, $sql);
 }
 
 
@@ -43,13 +45,22 @@ if ($method === "GET") {
     // Put response from db basketitems in basket array
     if ($result) {
         while ($row = $result->fetch_object()) {
-            array_push($basket, new BasketItem($row->Title, $row->Image, $row->Price));
+            array_push($basket, new BasketItem($row->Item_Id, $row->Title, $row->Image, $row->Price));
         }
-        //var_dump($basket);
     }
+    // Echo to JS get request to set set basket amount in header
+    if (isset($_GET['basket'])) {
+        echo count($basket);
+    }
+    //var_dump($_GET);
 };
 
-// Write code for delete button
+// Code for delete button
+if ($method === "POST" && isset($deleteId)) {
+    $action = "Delete from";
+    $sql = "DELETE FROM `basket` WHERE `basket`.`Item_Id` = $deleteId";
+    sendSQLQuery($action, $conn, $sql);
+}
 
 
 // ---- FUNCTIONS ------
@@ -60,7 +71,7 @@ function getMovieInfo($conn, $movieId)
     $result = $conn->query("SELECT * FROM movies WHERE Movie_Id = $movieId");
     if ($result) {
         while ($row = $result->fetch_object()) {
-            return new BasketItem($row->Title, $row->Image, $row->Price);
+            return new BasketItem(0, $row->Title, $row->Image, $row->Price);
         }
     }
 }
@@ -74,10 +85,10 @@ function userLoggedIn()
 };
 
 // Function to insert selected movie into basket in db
-function insertMoviesSQL($conn, $sql)
+function sendSQLQuery($action, $conn, $sql)
 {
     if (mysqli_query($conn, $sql)) {
-        echo "Records inserted successfully.";
+        echo "$action succesfully done to db";
     } else {
         echo "ERROR: Unable to execute $sql. " . mysqli_error($conn);
     }
@@ -85,32 +96,12 @@ function insertMoviesSQL($conn, $sql)
     mysqli_close($conn);
 }
 
-
-
-
-// if (isset($_COOKIE['data'])) {
-//     $basket = json_decode($_COOKIE['data']);
-// } else {
-//     //  echo 'there is no coockie';
-//     $basket = array();
-// }
-
-// If add to cart button is pushed JS will send POST request
-
-
-// function cookieBasket()
-// {
-//     if ($_POST['title'] == 'delete') {
-//         echo 'delete';
-//         setcookie("data", "", time() - 3600);
-//     } else {
-//         $moviesItems  = json_decode(file_get_contents("../movies.json"));
-//         foreach ($moviesItems as $movie) {
-//             if ($movie->title == $_POST['title']) {
-//                 array_push($basket, $movie);
-//                 setcookie("data", json_encode($basket), "/");
-//                 var_dump($basket);
-//             }
-//         }
-//     }
-// }
+// Display subtotal in cart page
+function setSubtotal($basket)
+{
+    $subtotal = 0;
+    foreach ($basket as $item) {
+        $subtotal += $item->price;
+    }
+    return $subtotal;
+}
