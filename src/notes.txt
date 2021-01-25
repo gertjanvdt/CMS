@@ -6,3 +6,5 @@ c2qph2l5ph1criiecf5p6tl0p0
 SELECT * FROM `basket` WHERE `basket`.`Session_Id` = 'c2qph2l5ph1criiecf5p6tl0p0'
 
 "DELETE FROM `basket` WHERE `basket`.`Item_Id` = 25"
+
+INSERT INTO `users` (`User_Id`, `First_Name`, `Last_Name`, `Email`, `Password`) VALUES (NULL, 'Jan', 'Patat', 'jan@patat.nl', '123456');
