@@ -2,22 +2,14 @@
 require "$path/models/User.php";
 $method = $_SERVER['REQUEST_METHOD'];
 $users = [];
-$result = $conn->query("SELECT * FROM users");
 
 use models\User;
-
-// Get users from DB
-if ($result) {
-    while ($row = $result->fetch_object()) {
-        array_push($users, new User($row->User_Id, $row->First_Name, $row->Last_Name, $row->Email, $row->Password));
-    }
-}
-
 
 // Check if user is already logged in. If not logged in run validation
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) {
     if ($method === 'POST') {
-        userLogin($users);
+        $user = getUserInfo($dbh, $_POST['email']);
+        userLogin($user);
     } else {
         require 'partials/userLogin.php';
     }
@@ -25,14 +17,34 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) {
     require 'partials/userLoggedIn.php';
 }
 
+// ----- FUNTIONS -----
+
+//  NEW Function to get user login info safely
+function getUserInfo($dbh, $email)
+{
+    $sql = "SELECT * FROM users WHERE Email = :email";
+    $sth = $dbh->prepare($sql);
+    $sth->execute([':email' => $email]);
+
+    foreach ($sth->fetchAll() as $row) {
+        // echo "<pre>";
+        // var_dump($row);
+        $user = new User($row['User_Id'], $row['First_Name'], $row['Last_Name'], $row['Email'], $row['Password']);
+    }
+
+    if (isset($user)) {
+        return $user;
+    }
+}
+
 // Function to check if incoming request is a POST and compare submitted email and password match result from DB
-function userLogin($users)
+function userLogin($user)
 {
     //echo json_encode($users);
-    if (isEmpty($_POST['email']) || isEmpty($_POST['password'])) {
+    if (empty($_POST['email']) || empty($_POST['password'])) {
         $warning = "Please enter email and password";
         require 'partials/userLogin.php';
-    } elseif (validateUser($users, $_POST['email'], $_POST['password'])) {
+    } elseif (validateUser($user, $_POST['password'], $user->Password)) {
         require 'partials/userLoggedIn.php';
     } else {
         $warning = "Email or password is incorrect";
@@ -40,20 +52,18 @@ function userLogin($users)
     }
 }
 
-
-function validateUser($users, $email, $password)
+// Function to validate password and set as loggedin
+function validateUser($user, $password, $hash)
 {
-    foreach ($users as $user) {
-        if ($user->Email === $email && $user->Password === $password) {
-            setUserInfo($user);
-            $_SESSION['loggedin'] = true;
-            //$info = array(true, $user->User_Id);
-            setcookie("loggedin", $user->User_Id, "/");
-            return true;
-        }
+    if (password_verify($password, $hash)) {
+        setUserInfo($user);
+        $_SESSION['loggedin'] = true;
+        setcookie("loggedin", $user->User_Id, "/");
+        return true;
+    } else {
+        $_SESSION['loggedin'] = false;
+        return false;
     }
-    $_SESSION['loggedin'] = false;
-    return false;
 }
 
 function setUserInfo($user)
@@ -62,21 +72,3 @@ function setUserInfo($user)
     $_SESSION['lastname'] = $user->Last_Name;
     $_SESSION['userid'] = $user->User_Id;
 }
-
-
-function isEmpty($text)
-{
-    return $text == '';
-}
-
-// function loginCookie($user)
-// {
-//     $sessionInfo = [];
-//     $userid = $user->User_Id;
-//     echo $userid;
-//     $session = session_id();
-//     array_push($sessionInfo, $userid);
-//     array_push($sessionInfo, $session);
-//     var_dump($sessionInfo);
-//     setcookie("data", json_encode($sessionInfo), "/");
-// }

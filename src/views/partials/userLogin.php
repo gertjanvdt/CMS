@@ -2,12 +2,19 @@
     <div class="login_boxContainer">
         <h2>Sign-in</h2>
         <form method="POST">
-            <h5>E-mail</h5><input class="<?php if (isset($warning)) {
-                                                echo "warning";
-                                            } ?>" type="text" value="" id="email" name="email">
-            <h5>Password</h5><input class="<?php if (isset($warning)) {
-                                                echo "warning";
-                                            } ?>" type="password" value="" id="password" name="password">
+            <label for="email">
+                <h5>E-mail</h5>
+            </label>
+
+            <input class="<?php if (isset($warning)) {
+                                echo "warning";
+                            } ?>" type="text" value="" id="email" name="email">
+            <label for="password">
+                <h5>Password</h5>
+            </label>
+            <input class="<?php if (isset($warning)) {
+                                echo "warning";
+                            } ?>" type="password" value="" id="password" name="password">
             <h4 class="login_warning">
                 <?php
                 if (isset($warning)) {

@@ -1,10 +1,10 @@
-response: "<br />↵<b>Notice</b>:  Undefined variable: userLoggedIn in <b>/var/www/html/models/basket.php</b> on line <b>22</b><br />↵insert to basket while logged inERROR: Unable to execute INSERT INTO `basket` (`Item_Id`, `Image`, `Title`, `Price`, `Discount`, `Amount`, `User_Id`, `Movie_Id`, `Session_Id`) VALUES (NULL, 'images/christmas_vacation.jpg', 'National Lampoon�s Christmas Vacation', '15', '0', '1', , 3, 'c2qph2l5ph1criiecf5p6tl0p0' );. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' 3, 'c2qph2l5ph1criiecf5p6tl0p0' )' at line 1"
+TO DO 
 
-
-c2qph2l5ph1criiecf5p6tl0p0
-
-SELECT * FROM `basket` WHERE `basket`.`Session_Id` = 'c2qph2l5ph1criiecf5p6tl0p0'
-
-"DELETE FROM `basket` WHERE `basket`.`Item_Id` = 25"
-
-INSERT INTO `users` (`User_Id`, `First_Name`, `Last_Name`, `Email`, `Password`) VALUES (NULL, 'Jan', 'Patat', 'jan@patat.nl', '123456');
+- Improve login logic/SQL and decrypt password
+- Add JS on register page to make fields red if selected and then deselected
+- Destroy session upon logout
+- build check if menu item but length of movies in db = 0 then don't display
+- Improve styling of navigation menu home page
+- basket link in account page
+- Discount button in account page
+- Improve logic of how other categories are displayed

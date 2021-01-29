@@ -68,7 +68,7 @@ if ($method === "POST" && isset($deleteId)) {
 // Function to get movie info from db that has to be added to the basket table in db
 function getMovieInfo($conn, $movieId)
 {
-    $result = $conn->query("SELECT * FROM movies WHERE Movie_Id = $movieId");
+    $result = $conn->query("SELECT * FROM movie WHERE Movie_Id = $movieId");
     if ($result) {
         while ($row = $result->fetch_object()) {
             return new BasketItem(0, $row->Title, $row->Image, $row->Price);

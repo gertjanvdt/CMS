@@ -1,3 +1,5 @@
+let cartAmount = document.getElementById('cart_amount');
+
 getData();
 
 
@@ -18,11 +20,17 @@ function getData() {
 };
 
 function setCartAmount(amount) {
-    let cartAmount = document.getElementById('cart_amount');
     if (amount === 0) {
         cartAmount.innerHTML = 0;
     } else {
         cartAmount.innerHTML = amount;
+        setStyling(amount);
     }
     
+}
+
+function setStyling(amount) {
+    if(amount >= 10) {
+        cartAmount.style.left = '12px'
+    }
 }

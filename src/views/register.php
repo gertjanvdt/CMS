@@ -1,25 +1,52 @@
 <?php
-require './models/NewUser.php';
 $path = $_SERVER['DOCUMENT_ROOT'];
+$method = $_SERVER['REQUEST_METHOD'];
 require "$path/connect.php";
+require './models/NewUser.php';
 
 use models\NewUser;
 
-$method = $_SERVER['REQUEST_METHOD'];
+// Display page to register of page if registered
+
+if ($method === "GET") {
+    if (isset($addUser) && $addUser == true) {
+        echo 'user added page';
+        require "$path/views/partials/userRegistered.php";
+    } else {
+        require "$path/views/partials/registerUser.php";
+    }
+}
+
 
 if ($method === 'POST') {
+    // Store new user in object
     $newUser = new NewUser($_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['password'], $_POST['confirm']);
 
+    // Gather if any warnings apply
     $warnings = [];
     array_push($warnings, checkPassword($newUser->password, $newUser->confirm));
     array_push($warnings, checkIfEmpty($newUser));
     array_push($warnings, checkAlreadyUser($conn, $newUser->email));
 
-    var_dump($warnings);
+    // If any warnings decide if user can be added 
+    foreach ($warnings as $warning) {
+        if (!empty($warning)) {
+            $addUser = false;
+            break;
+        } else {
+            $addUser = true;
+        }
+    }
 
     // if no warnings send sql query
-    $sql = "INSERT INTO `users` (`User_Id`, `First_Name`, `Last_Name`, `Email`, `Password`) VALUES (NULL, '$newUser->firstName', '$newUser->lastName', '$newUser->email', '$newUser->password');";
-    //sendSQLQuery($conn, $sql);
+    if ($addUser) {
+        $hashedPassword = password_hash($newUser->password, PASSWORD_BCRYPT);
+        $sql = "INSERT INTO `users` (`User_Id`, `First_Name`, `Last_Name`, `Email`, `Password`) VALUES (NULL, '$newUser->firstName', '$newUser->lastName', '$newUser->email', '$hashedPassword');";
+        sendSQLQuery($conn, $sql);
+        require "$path/views/partials/userRegistered.php";
+    } else {
+        require "$path/views/partials/registerUser.php";
+    }
 }
 
 // Function to check if all fields are filled in
@@ -30,7 +57,6 @@ function checkIfEmpty($newUser)
             return 'Please fill in all fields';
         }
     }
-    //return 'all fields are filled in';
 }
 
 // Function to check if password and confirm password match
@@ -38,8 +64,8 @@ function checkPassword($password, $confirm)
 {
     if ($password != $confirm) {
         return 'Passwords do not match';
-    } else {
-        //return 'passwords match';
+    } elseif (strlen($password) < 8) {
+        return 'Password must be minimum of 8 characters';
     }
 }
 
@@ -50,8 +76,6 @@ function checkAlreadyUser($conn, $userEmail)
 
     if ($result->num_rows >= 1) {
         return "You already have an account with this email address";
-    } else {
-        // return "email unknown";
     }
 }
 
@@ -60,29 +84,10 @@ function checkAlreadyUser($conn, $userEmail)
 function sendSQLQuery($conn, $sql)
 {
     if (mysqli_query($conn, $sql)) {
-        echo "User succesfully added to db";
+        //echo "User succesfully added to db";
     } else {
-        echo "ERROR: Unable to execute $sql. " . mysqli_error($conn);
+        //echo "ERROR: Unable to execute $sql. " . mysqli_error($conn);
     }
 
     mysqli_close($conn);
 }
-
-?>
-
-
-<main class="register_container">
-    <div class="registerForm_container">
-        <h2>Create New Account</h2>
-        <form method="POST">
-            <label for="fname">
-                <h5>First name:</h5>
-            </label><input type="text" value="" id="fname" name="fname">
-            <h5>Last name:</h5> <input type="text" value="" id="lname" name="lname">
-            <h5>Email:</h5> <input type="text" value="" id="email" name="email">
-            <h5>Password:</h5> <input type="password" value="" id="password" name="password">
-            <h5>Confirm Password:</h5> <input type="password" value="" id="confirm" name="confirm">
-            <button type="submit" class="amazon_btnPrimary signin_btn">Create Account</button>
-        </form>
-    </div>
-</main>
