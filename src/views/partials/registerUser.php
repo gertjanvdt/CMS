@@ -34,4 +34,5 @@
             <button type="submit" class="amazon_btnPrimary signin_btn">Create Account</button>
         </form>
     </div>
+    <script src="../js/register.js"></script>
 </main>

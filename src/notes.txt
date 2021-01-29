@@ -1,10 +1,7 @@
 TO DO 
-
-- Improve login logic/SQL and decrypt password
-- Add JS on register page to make fields red if selected and then deselected
-- Destroy session upon logout
-- build check if menu item but length of movies in db = 0 then don't display
 - Improve styling of navigation menu home page
 - basket link in account page
 - Discount button in account page
 - Improve logic of how other categories are displayed
+- validate email address if valid format
+- If user logged in then don't set session id in basket

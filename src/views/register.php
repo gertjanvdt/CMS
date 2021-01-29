@@ -41,12 +41,24 @@ if ($method === 'POST') {
     // if no warnings send sql query
     if ($addUser) {
         $hashedPassword = password_hash($newUser->password, PASSWORD_BCRYPT);
-        $sql = "INSERT INTO `users` (`User_Id`, `First_Name`, `Last_Name`, `Email`, `Password`) VALUES (NULL, '$newUser->firstName', '$newUser->lastName', '$newUser->email', '$hashedPassword');";
-        sendSQLQuery($conn, $sql);
+        addUserToDb($dbh, $hashedPassword, $newUser);
         require "$path/views/partials/userRegistered.php";
     } else {
         require "$path/views/partials/registerUser.php";
     }
+}
+
+// Function to send safe sql query
+function addUserToDb($dbh, $hashedPassword, $newUser)
+{
+    $data = [
+        'firstName' => $newUser->firstName,
+        'lastName' => $newUser->lastName,
+        'email' => $newUser->email,
+    ];
+    $sql = "INSERT INTO `users` (`User_Id`, `First_Name`, `Last_Name`, `Email`, `Password`) VALUES (NULL, :firstName, :lastName, :email, '$hashedPassword');";
+    $sth = $dbh->prepare($sql);
+    $sth->execute($data);
 }
 
 // Function to check if all fields are filled in
@@ -77,17 +89,4 @@ function checkAlreadyUser($conn, $userEmail)
     if ($result->num_rows >= 1) {
         return "You already have an account with this email address";
     }
-}
-
-
-// Function to insert selected movie into basket in db
-function sendSQLQuery($conn, $sql)
-{
-    if (mysqli_query($conn, $sql)) {
-        //echo "User succesfully added to db";
-    } else {
-        //echo "ERROR: Unable to execute $sql. " . mysqli_error($conn);
-    }
-
-    mysqli_close($conn);
 }

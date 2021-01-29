@@ -1,7 +1,8 @@
 <?php
-unset($_SESSION['firstname']);
-unset($_SESSION['lastname']);
-unset($_SESSION['loggedin']);
+// unset($_SESSION['firstname']);
+// unset($_SESSION['lastname']);
+// unset($_SESSION['loggedin']);
+session_destroy();
 setcookie("loggedin", "", time() - 3600);
 
 //destroy session
