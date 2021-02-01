@@ -27,6 +27,7 @@ if ($method === 'POST') {
     array_push($warnings, checkPassword($newUser->password, $newUser->confirm));
     array_push($warnings, checkIfEmpty($newUser));
     array_push($warnings, checkAlreadyUser($conn, $newUser->email));
+    array_push($warnings, checkValidEmail($newUser->email));
 
     // If any warnings decide if user can be added 
     foreach ($warnings as $warning) {
@@ -88,5 +89,14 @@ function checkAlreadyUser($conn, $userEmail)
 
     if ($result->num_rows >= 1) {
         return "You already have an account with this email address";
+    }
+}
+
+function checkValidEmail($haystack)
+{
+    $needle = '@';
+    $valid = strpos($haystack, $needle);
+    if (!$valid) {
+        return 'Please enter a valid email address';
     }
 }

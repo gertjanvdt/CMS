@@ -58,7 +58,9 @@ function validateUser($user, $password, $hash)
     if (password_verify($password, $hash)) {
         setUserInfo($user);
         $_SESSION['loggedin'] = true;
-        setcookie("loggedin", $user->User_Id, "/");
+        if (!isset($_COOKIE['loggedin'])) {
+            setcookie("loggedin", $user->User_Id, "/");
+        }
         return true;
     } else {
         $_SESSION['loggedin'] = false;

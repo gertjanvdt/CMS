@@ -78,7 +78,7 @@ function getMovies($movies, $conn, $category)
                 </div>
 
                 <div>
-                    <button data-title="<?php echo $movie->id ?>" onclick="sendData('models/basket.php','title', <?php echo $movie->id ?> );" type="button" class="amazon_btnPrimary add_to_cart">Add to cart</button>
+                    <button data-title="<?php echo $movie->id ?>" onclick="addToBasket('models/basket.php','title', <?php echo $movie->id ?> );" type="button" class="amazon_btnPrimary add_to_cart">Add to cart</button>
                 </div>
             </div>
 

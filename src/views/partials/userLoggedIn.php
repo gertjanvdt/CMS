@@ -1,3 +1,8 @@
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+require "$path/models/basket.php";
+?>
+
 <main class="loggedin_container">
 
 
@@ -7,26 +12,36 @@
     </div>
 
     <div class="loggedin_optionsContainer">
-        <div>
-            <p>As a valued customer your will get 10% off selected movies:</p>
-            <button class="amazon_btnPrimary" id="claim">Claim your discount!</button>
-        </div>
+        <?php
+        if (count($basket) > 0 && isset($_COOKIE['loggedin'])) {
+        ?>
+            <div class="loggedin_checkout">
+                <p>Get your wanted movies now!</p>
+                <a href="/checkout"><button class="amazon_btnPrimary" id="claim">Checkout</button></a>
+            </div>
+        <?php
+        }
+        ?>
 
 
         <div>
             <div>
-                <p class="hide loggedin_headerUser" id="congrats">Congrats! you claimed your discount</p>
-                <img class="loggedin_optionsImage" src="./images/popcorn.svg" alt="">
-                <p>Discover selected movies</p>
+                <a href="/" class="loggedin_basketLink">
+                    <p class="hide loggedin_headerUser" id="congrats">Congrats! you claimed your discount</p>
+                    <img class="loggedin_optionsImage" src="./images/popcorn.svg" alt="">
+                    <p>Discover selected movies</p>
+                </a>
             </div>
             <div>
-                <img class="loggedin_optionsImage" src="./images/cart-color.svg" alt="">
-                <p>View my shopping cart</p>
+                <a href="/cart" class="loggedin_basketLink">
+                    <img class="loggedin_optionsImage" src="./images/cart-color.svg" alt="">
+                    <p>View my shopping cart</p>
+                </a>
             </div>
 
         </div>
     </div>
 
     </div>
-    <script src="./js/loggedin.js"></script>
+    <!-- <script src="./js/loggedin.js"></script> -->
 </main>

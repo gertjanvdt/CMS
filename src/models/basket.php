@@ -21,7 +21,7 @@ if ($method === "POST" && isset($movieId)) {
     $movie = getMovieInfo($conn, $movieId);
     if (userLoggedIn()) {
         $userId = $_COOKIE['loggedin'];
-        $sql = "INSERT INTO `basket` (`Item_Id`, `Image`, `Title`, `Price`, `Discount`, `Amount`, `User_Id`, `Movie_Id`, `Session_Id`) VALUES (NULL, '$movie->image', '$movie->title', '$movie->price', '0', '1', $userId , $movieId, '$sessionId' );";
+        $sql = "INSERT INTO `basket` (`Item_Id`, `Image`, `Title`, `Price`, `Discount`, `Amount`, `User_Id`, `Movie_Id`, `Session_Id`) VALUES (NULL, '$movie->image', '$movie->title', '$movie->price', '0', '1', $userId , $movieId, 0 );";
         echo 'insert to basket while logged in';
     } else {
         $sql = "INSERT INTO `basket` (`Item_Id`, `Image`, `Title`, `Price`, `Discount`, `Amount`, `User_Id`, `Movie_Id`, `Session_Id`) VALUES (NULL, '$movie->image', '$movie->title', $movie->price, '0', '1', 0, $movieId, '$sessionId' );";

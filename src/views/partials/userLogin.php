@@ -1,4 +1,11 @@
 <main class="login_container">
+    <?php
+    if ($_SERVER["REDIRECT_URL"] === '/checkout') {
+    ?>
+        <h3>Please login before your checkout</h3>
+    <?php
+    }
+    ?>
     <div class="login_boxContainer">
         <h2>Sign-in</h2>
         <form method="POST">

@@ -1,7 +1,3 @@
 TO DO 
-- Improve styling of navigation menu home page
-- basket link in account page
 - Discount button in account page
 - Improve logic of how other categories are displayed
-- validate email address if valid format
-- If user logged in then don't set session id in basket

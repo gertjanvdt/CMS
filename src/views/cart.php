@@ -36,27 +36,10 @@ $basketCount = count($basket);
                 </div>
 
             </div>
-            <div class="checkout_leftBasketItems">
-                <!-- ROWS WITH ITEMS SET WITH BASED ON BASKET -->
-                <?php
-                if ($basket) {
-                    // var_dump($basket);
-                    foreach ($basket as $basketItem) {
-
-                ?>
-                        <div class="basketItem_row" data-title="<?php echo $basketRowId ?>">
-                            <img src="../images/delete.svg" class="delete_btn" data-title="<?php echo $basketItem->id ?>">
-                            <div>
-                                <img src="<?php echo $basketItem->image ?>" alt="item_image">
-                                <p><?php echo $basketItem->title ?></p>
-                                <p>$ <?php echo $basketItem->price ?></p>
-                            </div>
-                        </div>
-                <?php
-                    }
-                }
-                ?>
-            </div>
+            <!-- ROWS WITH ITEMS SET WITH BASED ON BASKET -->
+            <?php
+            include "$path/views/partials/basketItems.php";
+            ?>
             <div class="disclaimer_text">
                 <p>The price and availability of items at Amazon.com are subject to change. The Cart is a temporary place to store a list of your items and reflects each item's most recent price. Shopping CartLearn more
                     Do you have a gift card or promotional code? We'll ask you to enter your claim code when it's time to pay.</p>
@@ -74,7 +57,17 @@ $basketCount = count($basket);
                 </p>
                 <small class="subtotal_gift" data-children-count="1">
                     <input type="checkbox">This order contains a gift</small>
-                <button>Proceed to checkout</button>
+                <a href="/checkout">
+                    <button class="amazon_btnPrimary checkout_btn" <?php if (count($basket) === 0) {
+                                                                        echo "disabled";
+                                                                    } ?>>Proceed to checkout
+                    </button>
+                </a>
+                <?php if (count($basket) === 0) {
+                ?>
+                    <small>Fill your basket before you can checkout</small>
+                <?php
+                } ?>
             </div>
         </div>
     </div>

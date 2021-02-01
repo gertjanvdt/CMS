@@ -5,7 +5,6 @@
 session_destroy();
 setcookie("loggedin", "", time() - 3600);
 
-//destroy session
 ?>
 
 <main class="main_logout">

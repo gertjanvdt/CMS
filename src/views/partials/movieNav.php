@@ -32,11 +32,12 @@ function numberOfMovies($conn, $category)
             if ($item->numberOfMovies > 0) {
         ?>
 
-                <li class="main_navItem" data-title="<?php echo $item->id ?>"><?php echo $item->name ?></li>
+                <li class="main_navItem <?php if ($item->id === '1') {
+                                            echo "main_navItemSelected";
+                                        } ?>" data-title="<?php echo $item->id ?>"><?php echo $item->name ?></li>
         <?php
             }
         }
         ?>
-
     </ul>
 </div>

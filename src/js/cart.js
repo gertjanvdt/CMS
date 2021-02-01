@@ -1,5 +1,11 @@
 const bins = document.getElementsByClassName('delete_btn');
+const checkout = document.querySelector('.checkout_btn');
 
+
+
+if(checkout.disabled) {
+    checkout.style.backgroundColor = 'grey'
+}
 
 for (let i = 0; i < bins.length; i++) {
     let id = bins[i].dataset.title;
