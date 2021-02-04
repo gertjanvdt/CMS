@@ -39,6 +39,8 @@ include 'views/partials/head.php';
         require __DIR__ . '/views/register.php';
     } elseif ($request == '/checkout') {
         require __DIR__ . '/views/checkout.php';
+    } elseif ($request == '/completed') {
+        require __DIR__ . '/views/completed.php';
     } else {
         http_response_code(404);
         require __DIR__ . '/views/404.php';

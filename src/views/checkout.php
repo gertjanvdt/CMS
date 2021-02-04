@@ -2,6 +2,23 @@
 include './models/basket.php';
 //include "$path/views/partials/totalCost.php"
 
+echo date('d-m-Y');
+
+if (!isset($_COOKIE['loggedin'])) {
+?>
+    <div class="overlay">
+        <div class="modal">
+            <h2>Sign in or check out as Guest</h2>
+            <a href="/login"><button class="amazon_btnPrimary signin_btn">Login to account</button></a>
+            <button class="amazon_btnSecondary signin_btn">Check out as guest</button>
+        </div>
+    </div>
+    </div>
+
+
+<?php
+}
+
 ?>
 
 <main>
@@ -46,24 +63,24 @@ include './models/basket.php';
                 <option value="amex">American Express</option>
             </select>
             <h2>Payment Details</h2>
-            <form action="">
+            <form method="POST">
                 <label for="creditcard_number">
                     <h5>Credit Card Number</h5>
-                </label><input type="text" name="creditcard_number" placeholder="Enter your FAKE creditcard number">
+                </label><input type="text" name="creditcard_number" placeholder="Enter your FAKE creditcard number" class="payment_input">
                 <label for="cvv">
                     <h5>CVV</h5>
-                </label><input type="text" name="cvv" id="cvv" placeholder="Enter FAKE cvv">
+                </label><input type="text" name="cvv" id="cvv" placeholder="Enter FAKE cvv" class="payment_input">
                 <label for="expire">
                     <h5>Expiration Date</h5>
-                </label><input type="text" name="expire" id="expire" placeholder="DD-MM-YY">
+                </label><input type="text" name="expire" id="expire" placeholder="DD-MM-YY" class="payment_input">
 
-                <button class="amazon_btnPrimary" type="submit" id="payment_btn">Submit Payment</button>
+
             </form>
+            <a href="/completed"><button class="amazon_btnPrimary" type="submit" id="payment_btn">Submit Payment</button></a>
+            <small class="warning"></small>
             <small>For this clone no information entered here will be saved or used. However, for testing purpose make sure not to submit real credit card data.</small>
-
-
         </div>
     </div>
-    <script src="../js/checkout.js"></script>
     <script src="../js/register.js"></script>
+    <script src="../js/checkout.js"></script>
 </main>

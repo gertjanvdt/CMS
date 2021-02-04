@@ -27,8 +27,6 @@ function getUserInfo($dbh, $email)
     $sth->execute([':email' => $email]);
 
     foreach ($sth->fetchAll() as $row) {
-        // echo "<pre>";
-        // var_dump($row);
         $user = new User($row['User_Id'], $row['First_Name'], $row['Last_Name'], $row['Email'], $row['Password']);
     }
 

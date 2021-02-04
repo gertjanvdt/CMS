@@ -12,6 +12,7 @@ require "$path/models/basket.php";
     </div>
 
     <div class="loggedin_optionsContainer">
+
         <?php
         if (count($basket) > 0 && isset($_COOKIE['loggedin'])) {
         ?>
@@ -22,6 +23,7 @@ require "$path/models/basket.php";
         <?php
         }
         ?>
+
 
 
         <div>

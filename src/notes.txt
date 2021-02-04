@@ -1,3 +1,8 @@
 TO DO 
+- Must login before checking out
+- On checkout store order in db
+- Make oder page with past oders
+
 - Discount button in account page
 - Improve logic of how other categories are displayed
+- Make NewUser class an extension of User
