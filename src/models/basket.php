@@ -45,7 +45,7 @@ if ($method === "GET") {
     // Put response from db basketitems in basket array
     if ($result) {
         while ($row = $result->fetch_object()) {
-            array_push($basket, new BasketItem($row->Item_Id, $row->Title, $row->Image, $row->Price));
+            array_push($basket, new BasketItem($row->Item_Id, $row->Title, $row->Image, $row->Price, $row->Movie_Id));
         }
     }
     // Echo to JS get request to set set basket amount in header
@@ -71,7 +71,7 @@ function getMovieInfo($conn, $movieId)
     $result = $conn->query("SELECT * FROM movie WHERE Movie_Id = $movieId");
     if ($result) {
         while ($row = $result->fetch_object()) {
-            return new BasketItem(0, $row->Title, $row->Image, $row->Price);
+            return new BasketItem(0, $row->Title, $row->Image, $row->Price, $row->Movie_Id);
         }
     }
 }

@@ -41,6 +41,8 @@ include 'views/partials/head.php';
         require __DIR__ . '/views/checkout.php';
     } elseif ($request == '/completed') {
         require __DIR__ . '/views/completed.php';
+    } elseif ($request == '/orders') {
+        require __DIR__ . '/views/orders.php';
     } else {
         http_response_code(404);
         require __DIR__ . '/views/404.php';

@@ -145,6 +145,29 @@ header {
   margin: 0 auto 5em;
 }
 
+.option_orders {
+  position: relative;
+  cursor: pointer;
+}
+
+.ordersLogin_popup {
+  position: absolute;
+  z-index: +100;
+  background: #ddd;
+  height: 150px;
+  width: 250px;
+  top: 150%;
+  right: 0%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 3px;
+  box-shadow: 15px 15px 15px -9px rgba(0, 0, 0, 0.75);
+  color: black;
+  text-align: right;
+}
+
 /* STYLES FOR SUBHEADER */
 
 .subheader_container {
@@ -598,6 +621,68 @@ select {
   width: 50%;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(100, 100, 100, 0.8);
+  z-index: 50;
+}
+
+.modal {
+  position: relative;
+  width: 350px;
+  height: 300px;
+  margin: 20% auto;
+  z-index: 99;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  border-radius: 3px;
+}
+
+/* STYLES FOR COMPLETED */
+.completed_container {
+  margin: 1em;
+}
+
+/* STYLES FOR ORDERS */
+
+.orders {
+  margin: 20px;
+}
+
+.orders * img {
+  height: 6em;
+}
+
+.orders_list {
+  background: #f3f3f3;
+  padding: 10px;
+  width: 50%;
+}
+
+.order_line {
+  display: flex;
+  align-items: center;
+  padding: 10px 0 10px;
+  border-bottom: 1px #ddd solid;
+}
+
+.order_line * {
+  margin-right: 2em;
+}
+
+.order_line:last-child {
+  border: none;
+  padding-bottom: none;
+}
+
 /* FOOTER STYLES */
 footer {
   display: flex;
@@ -630,29 +715,4 @@ li {
 
 .hide {
   display: none;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(100, 100, 100, 0.8);
-  z-index: 50;
-}
-
-.modal {
-  position: relative;
-  width: 350px;
-  height: 300px;
-  margin: 20% auto;
-  z-index: 99;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  justify-content: center;
-  text-align: center;
-  border-radius: 3px;
 }

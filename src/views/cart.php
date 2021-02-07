@@ -2,6 +2,7 @@
 require 'models/basket.php';
 $basketRowId = 0;
 $basketCount = count($basket);
+
 ?>
 
 <main>

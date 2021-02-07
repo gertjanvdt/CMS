@@ -25,9 +25,17 @@
                 <p class="headerNav_optionBold">Accounts & Lists</p>
             </a>
         </div>
-        <div class="headerNav_option">
-            <span class="headerNav_option">Returns</span>
-            <span class="headerNav_optionBold">& Orders</span>
+        <div class="headerNav_option option_orders">
+            <div class="order_link">
+                <span class="headerNav_option">Returns</span>
+                <span class="headerNav_optionBold">& Orders</span>
+            </div>
+
+            <div class="ordersLogin_popup hide">
+                <p class="close_popup">x</p>
+                <a href="/login"><button type="submit" class="amazon_btnPrimary signin_btn">Sign in</button></a>
+                <a href="/register"><button class="amazon_btnSecondary signin_btn">Create your Amazon Account</button></a>
+            </div>
         </div>
 
         <div class="headerNav_option" id="cart_container">

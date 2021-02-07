@@ -1,9 +1,26 @@
-let cartAmount = document.getElementById('cart_amount');
+const cartAmount = document.getElementById('cart_amount');
+const closePopup = document.querySelector('.close_popup');
+let cookie = document.cookie;
+let loggedin = cookie.includes('loggedin');
+const popup = document.querySelector('.ordersLogin_popup');
+const optionOrder = document.querySelector('.order_link');
 
-getData();
+getData("models/basket.php?basket");
+
+optionOrder.addEventListener('click', (e) => {
+    if(loggedin) {
+        window.location.href = "/orders";
+    } else {     
+        popup.classList.remove('hide')
+    }
+})
+
+closePopup.addEventListener('click', () => {
+    popup.classList.add('hide');
+})
 
 
-function getData() {
+function getData(target) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         //console.log(this);
@@ -15,7 +32,7 @@ function getData() {
             }           
          }; 
     }
-    xhttp.open("GET", "models/basket.php?basket", true);
+    xhttp.open("GET", target, true);
     xhttp.send();
 };
 
@@ -34,3 +51,4 @@ function setStyling(amount) {
         cartAmount.style.left = '12px'
     }
 }
+

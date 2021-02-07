@@ -6,3 +6,6 @@ TO DO
 - Discount button in account page
 - Improve logic of how other categories are displayed
 - Make NewUser class an extension of User
+
+
+SELECT `Title`, `Image` FROM `movie` WHERE `Movie_Id` = 10

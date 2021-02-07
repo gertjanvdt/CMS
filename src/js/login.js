@@ -9,16 +9,8 @@ const isEmpty = (email, password) => {
     } else {
         return false;
     }
-   }
+}
 
-
-
-
-// loginBtn.addEventListener('mouseout', (e) => {
-//     emailField.style.borderColor = 'black';
-//     passField.style.borderColor = 'black';
-//     loginBtn.innerHTML = 'Sign in'
-// });
 
 loginBtn.addEventListener('click', (e) => {
     const result = document.querySelector('.result').innerHTML;

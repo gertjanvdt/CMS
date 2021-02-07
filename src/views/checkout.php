@@ -2,8 +2,6 @@
 include './models/basket.php';
 //include "$path/views/partials/totalCost.php"
 
-echo date('d-m-Y');
-
 if (!isset($_COOKIE['loggedin'])) {
 ?>
     <div class="overlay">
