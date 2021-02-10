@@ -2,6 +2,7 @@
 
 {
     "name": "gertjan/cms",
+    "description": "project",
     
     "require": {
         "twig/twig": "^3.1"
