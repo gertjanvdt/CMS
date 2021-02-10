@@ -1,10 +1,12 @@
 
 
 {
+    "name": "gertjan/cms",
+    
     "require": {
         "twig/twig": "^3.1"
     },
-    
+
     "autoload": {
         "classmap": [
             "src/"
