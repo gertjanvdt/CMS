@@ -57,7 +57,7 @@ function validateUser($user, $password, $hash)
         setUserInfo($user);
         $_SESSION['loggedin'] = true;
         if (!isset($_COOKIE['loggedin'])) {
-            setcookie("loggedin", $user->User_Id, "/");
+            setcookie("loggedin", $user->User_Id, time() + (86400 * 7), "/");
         }
         return true;
     } else {
